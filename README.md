@@ -1,24 +1,9 @@
-o__ __o        o__ __o         o__ __o__/_          o           o          o  
-<|     v\      <|     v\       <|    v              <|>         <|\        /|>
-/ \     <\     / \     <\      < >                  / \         / \\o    o// \
-\o/       \o   \o/     o/       |                 o/   \o       \o/ v\  /v \o/
-|         |>   |__  _<|        o__/_            <|__ __|>       |   <\/>   |  
-/ \       //    |       \       |                /       \      / \        / \
-\o/      /     <o>       \o    <o>             o/         \o    \o/        \o/
-|      o       |         v\    |             /v           v\    |          |  
-/ \  __/>      / \         <\  / \  _\o__/_  />             <\  / \        / \
+Hi there, 
 
+ Here is my new study project "Dream job".
+ 
+This web app is based on Tomcat web server.
 
+... more information is coming soon... 
 
-         __o__       o__ __o        o__ __o   
-           |        /v     v\      <|     v\  
-          / \      />       <\     / \     <\ 
-          \o/    o/           \o   \o/     o/ 
-           |    <|             |>   |__  _<|  
-          < >    \\           //    |       \ 
-  \        |       \         /     <o>      /
-   o       o        o       o       |      o  
-   <\__ __/>        <\__ __/>      / \  __/>  
-                                              
-                                              
-    
+... please stay tuned :)
