@@ -32,6 +32,24 @@
             </li>
         </ul>
     </div>
+    <div class="row">
+        <div class="card" style="width: 100%">
+            <div class="card-header">
+                New vacancies.
+            </div>
+            <div class="card-body"> Stay tuned...
+            </div>
+        </div>
+    </div>
+    <div class="row pt-3">
+        <div class="card" style="width: 100%">
+            <div class="card-header">
+                New candidates.
+            </div>
+            <div class="card-body"> Something will be available soon...
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
