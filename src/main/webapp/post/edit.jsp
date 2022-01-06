@@ -25,15 +25,15 @@
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                New vacancy.
+                New vacancy
             </div>
             <div class="card-body">
-                <form>
+                <form action="<%=request.getContextPath()%>/post/save" method="post">
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="name">
                     </div>
-                    <button type="submit" class="btn btn-outline-primary">Save</button>
+                    <button type="submit" class="btn btn-outline-dark">Save</button>
                 </form>
             </div>
         </div>

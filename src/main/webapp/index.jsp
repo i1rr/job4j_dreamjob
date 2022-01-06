@@ -34,14 +34,14 @@
                 <a class="nav-link" href="<%=request.getContextPath()%>/post/edit.jsp">Add vacancy</a>
             </li>
             <li>
-                <a class="nav-link" href="<%=request.getContextPath()%>/candidate/edit.jsp">Add vacancy</a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/candidate/edit.jsp">Add candidate</a>
             </li>
         </ul>
     </div>
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                New vacancies.
+                New vacancies
             </div>
             <div class="card-body"> Stay tuned...
             </div>
@@ -50,7 +50,7 @@
     <div class="row pt-3">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                New candidates.
+                New candidates
             </div>
             <div class="card-body"> Something will be available soon...
             </div>

@@ -32,7 +32,7 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Role</th>
+                        <th scope="col">Name</th>
                     </tr>
                     </thead>
                     <tbody>
