@@ -21,17 +21,28 @@
     <title>Dream job</title>
 </head>
 <body>
+<%
+    String id = request.getParameter("id");
+    Post post = new Post(0, "");
+    if (id != null) {
+        post = Store.instOf().findPostById(Integer.parseInt(id));
+    }
+%>
 <div class="container pt-3">
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                New vacancy
+                <% if (id == null) { %>
+                Create job
+                <% } else { %>
+                Edit job
+                <% } %>
             </div>
             <div class="card-body">
-                <form action="<%=request.getContextPath()%>/post/save" method="post">
+                <form action="<%=request.getContextPath()%>/post/save?id=<%=post.getId()%>" method="post">
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" name="name">
+                        <input type="text" class="form-control" name="name" value="<%=post.getName()%>">
                     </div>
                     <button type="submit" class="btn btn-outline-dark">Save</button>
                 </form>
