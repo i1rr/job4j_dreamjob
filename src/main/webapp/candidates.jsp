@@ -35,6 +35,7 @@
                     <thead>
                     <tr>
                         <th scope="col">Name</th>
+                        <th scope="col">Photo </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -45,6 +46,15 @@
                             <i class="fa fa-edit mr-3"></i>
                             </a>
                             <c:out value="${candy.name}"/>
+                        </td>
+                        <td>
+                            <img src="<c:url value='/download?name=${candy.id}.jpg'/>" width="100px" height="100px"/>
+                            <form method="post" action="<c:url value='/upload'/>" enctype="multipart/form-data">
+                                <input type="submit" name="file" value="Add photo" >
+                            </form>
+                            <form method="post" action="<c:url value='/delete'/>" enctype="multipart/form-data">
+                                <input type="submit" name="file" value="Delete photo" >
+                            </form>
                         </td>
                     </tr>
                     </c:forEach>
