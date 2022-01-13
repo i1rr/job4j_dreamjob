@@ -4,6 +4,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import ru.job4j.dream.service.Path;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -24,7 +25,7 @@ public class UploadServlet extends HttpServlet {
             throws ServletException, IOException {
         List<String> images = new ArrayList<>();
         for (File name : Objects.requireNonNull(
-                new File("/Users/i1/Downloads/")
+                new File(Path.candidatePic())
                 .listFiles())) {
             images.add(name.getName());
         }
@@ -43,7 +44,7 @@ public class UploadServlet extends HttpServlet {
         ServletFileUpload upload = new ServletFileUpload(factory);
         try {
             List<FileItem> items = upload.parseRequest(req);
-            File folder = new File("/Users/i1/Downloads/");
+            File folder = new File(Path.candidatePic());
             if (!folder.exists()) {
                 folder.mkdir();
             }

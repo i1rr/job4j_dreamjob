@@ -1,5 +1,7 @@
 package ru.job4j.dream.servlet;
 
+import ru.job4j.dream.service.Path;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +16,7 @@ public class DownloadServlet extends HttpServlet {
         String name = req.getParameter("name");
         File downloadFile = null;
         for (File file : Objects.requireNonNull(
-                new File("/Users/i1/Downloads/")
+                new File(Path.candidatePic())
                         .listFiles())) {
             if (name.equals(file.getName())) {
                 downloadFile = file;
