@@ -25,8 +25,5 @@ hs_err_pid*
 .idea
 *.iml
 
-# PSQL Credentials
-*.properties
-
 target
 out
