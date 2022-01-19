@@ -49,8 +49,9 @@ public class UploadServlet extends HttpServlet {
                 folder.mkdir();
             }
             for (FileItem item : items) {
+                System.out.println(item.toString());
                 if (!item.isFormField()) {
-                    File file = new File(folder + File.separator + item.getName());
+                    File file = new File(folder + File.separator + req.getParameter("id") + ".png");
                     try (FileOutputStream out = new FileOutputStream(file)) {
                         out.write(item.getInputStream().readAllBytes());
                     }

@@ -14,6 +14,6 @@ public class DeleteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         Store.instOf().deleteCandidate(id);
-        FileUtils.deleteQuietly(new File(Path.candidatePic() + id + ".jpg"));
+        FileUtils.deleteQuietly(new File(Path.candidatePic() + id + ".png"));
     }
 }
