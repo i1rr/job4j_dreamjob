@@ -8,12 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
 
 public class DeleteServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    throws IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Store.instOf().deleteCandidate(id);
         FileUtils.deleteQuietly(new File(Path.candidatePic() + id + ".png"));
+        response.sendRedirect(request.getContextPath() + "/candidates.do");
     }
 }

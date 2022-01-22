@@ -1,17 +1,15 @@
 package ru.job4j.dream.service;
 
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 public class Path {
     public static String candidatePic() {
         String path = null;
-        try {
-            FileReader reader = new FileReader(
-                    "/Users/i1/IdeaProjects/job4j_dreamjob/src/main/resources/app.properties");
+        ClassLoader cl = Thread.currentThread().getContextClassLoader();
+        try (InputStream is = cl.getResourceAsStream("app.properties")) {
             Properties p = new Properties();
-            p.load(reader);
+            p.load(is);
             path = p.getProperty("candidatePicPath");
         } catch (IOException io) {
             io.printStackTrace();

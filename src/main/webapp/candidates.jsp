@@ -28,7 +28,12 @@
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                Candidates
+                <table style="width:100%">
+                    <tr>
+                        <td>Candidates</td>
+                        <td><a style="text-align:right" class="nav-link" href="<%=request.getContextPath()%>/index.do">...go bacK!</a></td>
+                    </tr>
+                </table>
             </div>
             <div class="card-body">
                 <table class="table">
