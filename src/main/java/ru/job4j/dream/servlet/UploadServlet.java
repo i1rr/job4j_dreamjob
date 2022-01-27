@@ -18,13 +18,13 @@ import java.io.IOException;
 import java.util.List;
 
 public class UploadServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/upload.jsp");
-        dispatcher.forward(req, resp);
-    }
+//    @Override
+//    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+//            throws ServletException, IOException {
+//
+//        RequestDispatcher dispatcher = req.getRequestDispatcher("/upload.jsp");
+//        dispatcher.forward(req, resp);
+//    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -53,6 +53,7 @@ public class UploadServlet extends HttpServlet {
         } catch (FileUploadException e) {
             e.printStackTrace();
         }
-        doGet(req, resp);
+        resp.sendRedirect(req.getContextPath() + "/candidates.do");
+//        doGet(req, resp);
     }
 }

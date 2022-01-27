@@ -35,6 +35,12 @@
                     </tr>
                 </table>
             </div>
+            <div class="btn-light">
+                <tr>
+                    <a class="nav-link" href="<%=request.getContextPath()%>/candidate/edit.jsp">Add candidate</a>
+                </tr>
+
+            </div>
             <div class="card-body">
                 <table class="table">
                     <thead>
@@ -57,7 +63,7 @@
                         </td>
                         <td>
                             <img src="<c:url value='/download?name=${candy.id}.png'/>" width="100px" height="100px"/>
-                            <form method="post" action="<c:url value='/upload?id=${candy.id}'/>" enctype="multipart/form-data">
+                            <form method="post" action="<c:url value='/upload.jsp?id=${candy.id}'/>" enctype="multipart/form-data">
                                 <input type="submit" name="file" value="Add photo" >
                             </form>
                         </td>
