@@ -1,6 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="ru.job4j.dream.model.Candidate" %>
-<%@ page import="java.util.Collection" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -35,13 +33,10 @@
                     </tr>
                 </table>
             </div>
-            <div class="btn-light">
-                <tr>
+            <div class="btn" style="text-align:left">
                     <a class="nav-link" href="<%=request.getContextPath()%>/candidate/edit.jsp">Add candidate</a>
-                </tr>
-
             </div>
-            <div class="card-body">
+            <div>
                 <table class="table">
                     <thead>
                     <tr>
