@@ -1,6 +1,8 @@
 package ru.job4j.dream.store;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.job4j.dream.model.Candidate;
 import ru.job4j.dream.model.Post;
 
@@ -13,6 +15,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class DbStore implements Store {
+    private static final Logger LOGGER = LoggerFactory.getLogger(DbStore.class.getName());
 
     private final BasicDataSource pool = new BasicDataSource();
 
@@ -26,12 +29,12 @@ public class DbStore implements Store {
         )) {
             cfg.load(io);
         } catch (Exception e) {
-            throw new IllegalStateException(e);
+            LOGGER.error(e.getMessage(), e);
         }
         try {
             Class.forName(cfg.getProperty("jdbc.driver"));
         } catch (Exception e) {
-            throw new IllegalStateException(e);
+            LOGGER.error(e.getMessage(), e);
         }
         pool.setDriverClassName(cfg.getProperty("jdbc.driver"));
         pool.setUrl(cfg.getProperty("jdbc.url"));
@@ -62,7 +65,7 @@ public class DbStore implements Store {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage(), e);
         }
         return posts;
     }
@@ -79,7 +82,7 @@ public class DbStore implements Store {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage(), e);
         }
         return candidates;
     }
@@ -115,7 +118,7 @@ public class DbStore implements Store {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage(), e);
         }
         return post;
     }
@@ -133,7 +136,7 @@ public class DbStore implements Store {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage(), e);
         }
         return candidate;
     }
@@ -145,7 +148,7 @@ public class DbStore implements Store {
             ps.setInt(2, post.getId());
             ps.executeUpdate();
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage(), e);
         }
     }
 
@@ -157,7 +160,7 @@ public class DbStore implements Store {
             ps.setInt(2, candidate.getId());
             ps.executeUpdate();
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage(), e);
         }
     }
 
@@ -173,7 +176,7 @@ public class DbStore implements Store {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage(), e);
         }
         return null;
     }
@@ -190,7 +193,7 @@ public class DbStore implements Store {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage(), e);
         }
         return null;
     }
@@ -203,7 +206,7 @@ public class DbStore implements Store {
             ps.setInt(1, id);
             return ps.executeUpdate() > 0;
         } catch (SQLException sql) {
-            sql.printStackTrace();
+            LOGGER.error(sql.getMessage(), sql);
         }
         return false;
     }
@@ -216,7 +219,7 @@ public class DbStore implements Store {
             ps.setInt(1, id);
             return ps.executeUpdate() > 0;
         } catch (SQLException sql) {
-            sql.printStackTrace();
+            LOGGER.error(sql.getMessage(), sql);
         }
         return false;
     }
@@ -226,7 +229,7 @@ public class DbStore implements Store {
              PreparedStatement ps = cn.prepareStatement("DELETE FROM post")) {
             ps.execute();
         } catch (SQLException sql) {
-            sql.printStackTrace();
+            LOGGER.error(sql.getMessage(), sql);
         }
     }
 
@@ -235,7 +238,7 @@ public class DbStore implements Store {
              PreparedStatement ps = cn.prepareStatement("DELETE FROM candidate")) {
             ps.execute();
         } catch (SQLException sql) {
-            sql.printStackTrace();
+            LOGGER.error(sql.getMessage(), sql);
         }
     }
 }

@@ -9,7 +9,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MemStore {
-
     private static final MemStore INST = new MemStore();
 
     private static final AtomicInteger POST_ID = new AtomicInteger(3);
