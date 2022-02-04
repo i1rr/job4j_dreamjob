@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.job4j.dream.model.Candidate;
 import ru.job4j.dream.model.Post;
+import ru.job4j.dream.model.User;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -240,5 +241,15 @@ public class DbStore implements Store {
         } catch (SQLException sql) {
             LOGGER.error(sql.getMessage(), sql);
         }
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+        return null;
+    }
+
+    @Override
+    public boolean saveUser(User user) {
+        return false;
     }
 }
