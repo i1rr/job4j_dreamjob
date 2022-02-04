@@ -1,6 +1,7 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page import="ru.job4j.dream.store.DbStore" %>
+<%@ page import="ru.job4j.dream.model.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -17,9 +18,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-    <title>Dream job</title>
+    <title>Dream job[Registration]</title>
 </head>
 <body>
+<%
+    String email = request.getParameter("email");
+    User usr = new User(0, "", "", "");
+    if (email != null) {
+        usr = DbStore.instOf().findUserByEmail(email);
+    }
+%>
 <div class="container pt-3">
     <div class="row">
         <ul class="nav">
@@ -39,11 +47,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<%=request.getContextPath()%>/login.jsp"> Login</a>
                 </li>
-                <li>
-                    <form action="<%=request.getContextPath()%>/reg.jsp" method="post">
-                        <button type="submit" class="btn-outline-primary">Register</button>
-                    </form>
-                </li>
             </c:if>
             <c:if test="${user != null}">
                 <li class="nav-item">
@@ -55,27 +58,24 @@
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                        Authorization
+                New user
             </div>
             <div class="card-body">
-                <table>
-                        <form action="<%=request.getContextPath()%>/auth.do" method="post">
-                            <div class="form-group">
-                                <label>e-mail</label>
-                                <input type="text" class="form-control" name="email">
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="text" class="form-control" name="password">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Login</button>
-                            <c:if test="${not empty error}">
-                                <div style="color:#00000f; font-weight: bold; margin: 30px 0;">
-                                    <c:out value="${error}"/>
-                                </div>
-                            </c:if>
-                        </form>
-                </table>
+                <form action="<%=request.getContextPath()%>/reg.do?id=<%=usr.getId()%>" method="post">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" name="name" value="<%=usr.getName()%>">
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="text" class="form-control" name="email" value="<%=usr.getEmail()%>">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="text" class="form-control" name="password" value="<%=usr.getPassword()%>">
+                    </div>
+                    <button type="submit" class="btn btn-outline-dark">Save</button>
+                </form>
             </div>
         </div>
     </div>

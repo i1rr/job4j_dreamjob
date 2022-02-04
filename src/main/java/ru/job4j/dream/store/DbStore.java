@@ -245,11 +245,42 @@ public class DbStore implements Store {
 
     @Override
     public User findUserByEmail(String email) {
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps =  cn.prepareStatement("SELECT * FROM \"user\" WHERE email = ?")
+        ) {
+            ps.setString(1, email);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return new User(rs.getInt("id"), rs.getString("name"),
+                            rs.getString("email"), rs.getString("password"));
+                }
+            }
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(), e);
+        }
         return null;
     }
 
     @Override
     public boolean saveUser(User user) {
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement(
+                     "INSERT INTO \"user\"(name, email, password) VALUES (?, ?, ?)",
+                     PreparedStatement.RETURN_GENERATED_KEYS)
+        ) {
+            ps.setString(1, user.getName());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getPassword());
+            ps.execute();
+            try (ResultSet id = ps.getGeneratedKeys()) {
+                if (id.next()) {
+                    user.setId(id.getInt(1));
+                }
+            }
+            return true;
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(), e);
+        }
         return false;
     }
 }
