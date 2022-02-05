@@ -12,6 +12,6 @@ CREATE TABLE IF NOT EXISTS candidate (
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     name TEXT,
-    email TEXT unique,
+    email TEXT NOT NULL UNIQUE,
     password text
 );
