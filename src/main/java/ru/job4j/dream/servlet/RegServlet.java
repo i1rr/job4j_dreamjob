@@ -18,7 +18,6 @@ public class RegServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         User user = new User(0, name, email, password);
-        user.setPassword(password);
         boolean isUserSaved = DbStore.instOf().saveUser(user);
 
         if (isUserSaved) {

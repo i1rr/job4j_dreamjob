@@ -5,7 +5,7 @@ import java.util.Objects;
 public class User {
     private int id;
     private String name;
-    private String email;
+    private final String email;
     private String password;
 
     public User(int id, String name, String email, String password) {
@@ -33,10 +33,6 @@ public class User {
 
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPassword() {
