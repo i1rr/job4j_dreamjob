@@ -246,7 +246,7 @@ public class DbStore implements Store {
     @Override
     public User findUserByEmail(String email) {
         try (Connection cn = pool.getConnection();
-             PreparedStatement ps =  cn.prepareStatement("SELECT * FROM \"user\" WHERE email = ?")
+             PreparedStatement ps =  cn.prepareStatement("SELECT * FROM users WHERE email = ?")
         ) {
             ps.setString(1, email);
             try (ResultSet rs = ps.executeQuery()) {
@@ -265,7 +265,7 @@ public class DbStore implements Store {
     public boolean saveUser(User user) {
         try (Connection cn = pool.getConnection();
              PreparedStatement ps = cn.prepareStatement(
-                     "INSERT INTO \"user\"(name, email, password) VALUES (?, ?, ?)",
+                     "INSERT INTO users(name, email, password) VALUES (?, ?, ?)",
                      PreparedStatement.RETURN_GENERATED_KEYS)
         ) {
             ps.setString(1, user.getName());

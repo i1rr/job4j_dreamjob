@@ -21,69 +21,69 @@
     <title>Dream job</title>
 </head>
 <body>
-<div class="container pt-3">
-    <div class="row">
-        <ul class="nav">
-            <li>
-                <a class="nav-link" href="<%=request.getContextPath()%>/posts.do">Jobs</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/candidates.do">Candidates</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/post/edit.jsp">Add vacancy</a>
-            </li>
-            <li>
-                <a class="nav-link" href="<%=request.getContextPath()%>/candidate/edit.jsp">Add candidate</a>
-            </li>
-            <c:if test="${user == null}">
-                <li class="nav-item">
-                    <a class="nav-link" href="<%=request.getContextPath()%>/login.jsp"> Login</a>
+    <div class="container pt-3">
+        <div class="row">
+            <ul class="nav">
+                <li>
+                    <a class="nav-link" href="<%=request.getContextPath()%>/posts.do">Jobs</a>
                 </li>
-            </c:if>
-            <c:if test="${user != null}">
                 <li class="nav-item">
-                    <a class="nav-link" href="<%=request.getContextPath()%>/logout.do"> <c:out value="${user.name}"/> | Logout</a>
+                    <a class="nav-link" href="<%=request.getContextPath()%>/candidates.do">Candidates</a>
                 </li>
-            </c:if>
-        </ul>
-    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="<%=request.getContextPath()%>/post/edit.jsp">Add vacancy</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="<%=request.getContextPath()%>/candidate/edit.jsp">Add candidate</a>
+                </li>
+                <c:if test="${user == null}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%=request.getContextPath()%>/login.jsp"> Login</a>
+                    </li>
+                </c:if>
+                <c:if test="${user != null}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%=request.getContextPath()%>/logout.do"> <c:out value="${user.name}"/> | Logout</a>
+                    </li>
+                </c:if>
+            </ul>
+        </div>
 
-    <div class="row">
-        <div class="card" style="width: 100%">
-            <div>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Photo </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${candidates}" var="candy">
-                    <tr>
-                        <td>
-                            <a href='<c:url value="/candidate/edit.jsp?id=${candy.id}"/>'>
-                            <i class="fa fa-edit mr-3"></i>
-                            </a>
-                            <c:out value="${candy.name}"/>
-                            <form method="post" action="<c:url value='/delete?id=${candy.id}'/>" enctype="multipart/form-data">
-                                <input type="submit" name="file" value="Delete candidate" >
-                            </form>
-                        </td>
-                        <td>
-                            <img src="<c:url value='/download?name=${candy.id}.png'/>" width="100px" height="100px"/>
-                            <form method="post" action="<c:url value='/upload.jsp?id=${candy.id}'/>" enctype="multipart/form-data">
-                                <input type="submit" name="file" value="Add photo" >
-                            </form>
-                        </td>
-                    </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
+        <div class="row">
+            <div class="card" style="width: 100%">
+                <div>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Photo </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${candidates}" var="candy">
+                        <tr>
+                            <td>
+                                <a href='<c:url value="/candidate/edit.jsp?id=${candy.id}"/>'>
+                                <i class="fa fa-edit mr-3"></i>
+                                </a>
+                                <c:out value="${candy.name}"/>
+                                <form method="post" action="<c:url value='/delete?id=${candy.id}'/>" enctype="multipart/form-data">
+                                    <input type="submit" name="file" value="Delete candidate" >
+                                </form>
+                            </td>
+                            <td>
+                                <img src="<c:url value='/download?name=${candy.id}.png'/>" width="100px" height="100px"/>
+                                <form method="post" action="<c:url value='/upload.jsp?id=${candy.id}'/>" enctype="multipart/form-data">
+                                    <input type="submit" name="file" value="Add photo" >
+                                </form>
+                            </td>
+                        </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>
